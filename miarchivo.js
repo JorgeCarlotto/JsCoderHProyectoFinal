@@ -1,27 +1,88 @@
 
-alert("Bienvenido Piloto a nuestra sección Distancia entre Puntos y Combustible")
+alert("Bienvenido Piloto a nuestra App Aeronautica")
 
 //CAPTURA DE DATOS POR PARTE DEL USUARIO
 
 //Primero capturo los datos con un pront, la idea es en el fututo diseñar un formulario para cargar y validar datos.
-alert("Primero vamos a seleccionar la posición de donde partimos o precio de combustible")
-
-let userChoose = prompt("Que preferis elegir (1)Aeropuerto o (2)Cargar mi Latitud y Longitud,(3)Precio de Combustible")
+alert("Primero vamos a seleccionar que queremos hacer")
+alert("Selecciona la opcion con el numero correspondiente. Ej: (3)Precio de Combustible, escribir el numero 3 en la pantalla")
+let userChoose = prompt("Que preferis elegir distancia desde  (1)Aeropuertos o (2)Cargar mi Latitud y Longitud, (3)Precio de Combustible")
 
 let inicio = distance(userChoose)
 
 function distance ( number ){
 
     if(parseInt(number)=== 1){
+
+        alert("Aeropuerto de salida")
+        let aeropuertoSalida =  prompt('(1)Mar del Plata,(2)Aeroparque,(3)Ezeiza')
         
-    alert("Aeropuerto de salida")
-        let aeropuertoSalida =  prompt('Mar del Plata,Aeroparque,Ezeiza')
+        alert("Aeropuerto de llegada")
+        let aeropuertoLlegada =  prompt('(1)Mar del Plata,(2)Aeroparque,(3)Ezeiza')
+        
+        // alert("Por el momento la funcion no se encuentra disponible intente cargar Latitud y Longitud")
+        
+        let sazm = {
+            id:1,
+            nombre:"Mar del Plata",
+            lat:[37,56,02],
+            log:[57,34,22]
+            
+        }
+        
+        let sabe = {
+            id:2,
+            nombre:"Aeroparque",
+            lat:[34,33,32],
+            log:[58,24,57]
+        }
+        
+        let saez = {
+            id:3,
+            nombre:"Ezeiza",
+            lat:[34,49,19],
+            log:[58,32,09]
+        }
+        
+        let dataBaseAirpot =[sazm,sabe,saez]
+        
+        function takeoffAirport(takeoff){
+            for (let i = 0; i < dataBaseAirpot.length; i++) {
+                if(parseInt(takeoff) === dataBaseAirpot[i].id ){
+                    let positionOne=[]      
+                    let lat1 = LatLogGradosDecimales (dataBaseAirpot[i].lat[0],dataBaseAirpot[i].lat[1],dataBaseAirpot[i].lat[2])
+                    let lon1 = LatLogGradosDecimales (dataBaseAirpot[i].log[0],dataBaseAirpot[i].log[1],dataBaseAirpot[i].log[2])
+                  
+                    positionOne.push(lat1,lon1)
+                    return positionOne
+            }
+            
+        }
+        
+        }
+        function landingAirport(landing){
+            for (let i = 0; i < dataBaseAirpot.length; i++) {
+                if(parseInt(landing) === dataBaseAirpot[i].id ){
+                    let positionTwo=[]      
+                    let lat1 = LatLogGradosDecimales (dataBaseAirpot[i].lat[0],dataBaseAirpot[i].lat[1],dataBaseAirpot[i].lat[2])
+                    let lon1 = LatLogGradosDecimales (dataBaseAirpot[i].log[0],dataBaseAirpot[i].log[1],dataBaseAirpot[i].log[2])
+                  
+                    positionTwo.push(lat1,lon1)
+                    return positionTwo
+            }
+            
+        }
+        
+        }
+        
+        let toaLat = takeoffAirport(aeropuertoSalida)[0] 
+        let toaLong = takeoffAirport(aeropuertoSalida)[1] 
+        let lanLat = landingAirport(aeropuertoLlegada)[0]
+        let lanlog = landingAirport(aeropuertoLlegada)[1]
+        
+        alert("La distancia entre sus dos aeropuertos es: " + Dist(toaLat,toaLong,lanLat,lanlog) )
 
-    alert("Aeropuerto de llegada")
-        let aeropuertoLlegada =  prompt('Mar del Plata,Aeroparque,Ezeiza')
-
-    alert("Por el momento la funcion no se encuentra disponible intente cargar Latitud y Longitud")
-
+        
     }else if(parseInt(number) === 2){
 
  alert("Ahora vamos a seleccionar la posición de donde salimos")
@@ -87,7 +148,8 @@ alert("La distancia a tu destino es de: "+ (Dist(lat1, lon1, lat2, lon2))+"milla
 
         for (let i = 0; i < aeropuertos.length; i++) {
             
-        alert(aeropuertos[i].nombre)
+        alert(aeropuertos[i].nombre +" --- "+ "Precio de Aereo nafta: " + aeropuertos[i].aeroNafta +"$"+"--- "
+        +"Precio de JetA1:" + aeropuertos[i].JetA1 +"$"  )
             
         }
 
