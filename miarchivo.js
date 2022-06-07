@@ -1,18 +1,18 @@
 
-alert("Bienvenido Piloto a nuestra sección Distancia entre Puntos")
+alert("Bienvenido Piloto a nuestra sección Distancia entre Puntos y Combustible")
 
 //CAPTURA DE DATOS POR PARTE DEL USUARIO
 
-//Primero capturo los datos con un pront, la idea es en el fututo diseñar un formulario para cargar datos.
-alert("Primero vamos a seleccionar la posición de donde partimos")
+//Primero capturo los datos con un pront, la idea es en el fututo diseñar un formulario para cargar y validar datos.
+alert("Primero vamos a seleccionar la posición de donde partimos o precio de combustible")
 
-let userChoose = prompt("Que preferis elegir (1)Aeropuerto o (2)Cargar mi Latitud y Longitud")
+let userChoose = prompt("Que preferis elegir (1)Aeropuerto o (2)Cargar mi Latitud y Longitud,(3)Precio de Combustible")
 
-let inicio = asd(userChoose)
+let inicio = distance(userChoose)
 
-function asd ( numero ){
+function distance ( number ){
 
-    if(parseInt(numero)=== 1){
+    if(parseInt(number)=== 1){
         
     alert("Aeropuerto de salida")
         let aeropuertoSalida =  prompt('Mar del Plata,Aeroparque,Ezeiza')
@@ -22,7 +22,7 @@ function asd ( numero ){
 
     alert("Por el momento la funcion no se encuentra disponible intente cargar Latitud y Longitud")
 
-    }else if(parseInt(numero) === 2){
+    }else if(parseInt(number) === 2){
 
  alert("Ahora vamos a seleccionar la posición de donde salimos")
  alert("Ejemplo : 42° 00' 00''")
@@ -56,13 +56,48 @@ let lat2 = LatLogGradosDecimales (latGraDos,latMinuDos,latSegDos)
 let lon2 = LatLogGradosDecimales (longGraDos,longMinuDos,longSegDos)
 
 alert("La distancia a tu destino es de: "+ (Dist(lat1, lon1, lat2, lon2))+"millas nauticas")
+    
+    
+    }else if(parseInt(number) === 3){
 
-    }else{
-        alert('El dato seleccionado no es valido')
+        alert('En este momento tenemos disponibles en nuestra base de datos estos tres Aeropuertos')
+        
+        let marDelPlata = {
+            id:1,
+            nombre: "Aeropuerto Mar del Plata",
+            aeroNafta :190,
+            JetA1:150
+        }
+        
+        let ezeiza = {
+            id:2,
+            nombre: "Aeropuerto Ezeiza",
+            aeroNafta :170,
+            JetA1:130
+        }
+        
+        let comodoroRivadavia = {
+            id:3,
+            nombre: "Aeropuerto Comodoro Rivadavia",
+            aeroNafta :120,
+            JetA1:100
+        }
+        
+        let aeropuertos = [marDelPlata,ezeiza,comodoroRivadavia]
+
+        for (let i = 0; i < aeropuertos.length; i++) {
+            
+        alert(aeropuertos[i].nombre)
+            
+        }
+
     }
+
+else{
+    alert('El dato seleccionado no es valido')
 }
 
-
+}
 
 
 //CALCULOS DE POSICIONAMIENTO Y DISTANCIA.
