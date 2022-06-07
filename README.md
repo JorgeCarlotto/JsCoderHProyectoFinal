@@ -15,15 +15,21 @@ para pilotos de aeronaves</p>
 ### PRINCIPALES FUNCIONALIDADES
 
 -Determina distancia entre dos Aeropuertos.
+
 -Determina distancia entre dos posiciones Georreferenciadas.
+
 -Mostrar datos de precios de combustibles.  
 
 ### FUTURAS FUNCIONALIDADES
 
 -Obtener condiciones meteorológicas.
+
 -Consumo de combustible y requerimientos de combustible.
+
 -Cálculos de distancia tiempos.
+
 -Cargar las características de tu aeronave para realizar los cálculos. 
+
 - Y muchas mas...
 
 
