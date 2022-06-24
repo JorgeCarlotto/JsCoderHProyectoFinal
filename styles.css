@@ -88,3 +88,20 @@ body {
     }
   }
 
+
+  /*Vista distancia entre aeropuertos*/
+
+  #mainDisAirport{
+     background-image: url("https://www.10wallpaper.com/wallpaper/1366x768/1309/Airport_taxiing_aircraft-September_2013_Bing_wallpaper_1366x768.jpg");
+     background-repeat:no-repeat;
+  background-position-x:center;
+     background-position-y:25%; 
+     background-size: cover
+    
+  }
+
+  #subTextoDistanciaAirport{
+    
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color:white;
+  }
