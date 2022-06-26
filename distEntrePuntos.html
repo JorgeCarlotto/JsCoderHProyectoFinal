@@ -54,25 +54,25 @@
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                   <h6 class="my-0">Posición UNO</h6>
-                  <small class="text-muted">Latitud : 45° 24° 11°</small>
+                  <small id="postUnoLartText" class="text-muted">Latitud : 45° 24° 11°</small>
                   <br>
-                  <small class="text-muted">Longitud: 45° 24° 11°</small>
+                  <small id="postUnoLongText" class="text-muted">Longitud: 45° 24° 11°</small>
                 </div>
                 
               </li>
               <li class="list-group-item d-flex justify-content-between lh-sm">
                 <div>
                   <h6 class="my-0">Posición DOS</h6>
-                  <small class="text-muted">Latitud : 45° 24° 11°</small>
+                  <small id="postDosLartText" class="text-muted">Latitud : 45° 24° 11°</small>
                   <br>
-                  <small class="text-muted">Longitud: 45° 24° 11°</small>
+                  <small id="postDosLongText" class="text-muted">Longitud: 45° 24° 11°</small>
                 </div>
               </li>
 
               <li class="list-group-item d-flex justify-content-between bg-light">
                 <div class="text-success">
-                  <h6 class="my-0">La distancia entre posiciones es:</h6>
-                  <h4 class="my-0">100nm</h4>
+                  <h6  class="my-0">La distancia entre posiciones es:</h6>
+                  <h4 id="resultFinal" class="my-0"></h4>
                 </div>
         
               </li>
@@ -83,7 +83,7 @@
           </div>
           <div class="col-md-7 col-lg-6 " >
 
-            <form class=" p-4 p-md-5  rounded-3" novalidate>
+            <form id="formDistPuntos" class=" p-4 p-md-5  rounded-3" novalidate>
               <div class="row g-3">
                 <h4 class="mb-3">Carga los datos</h4>
                 <h4 class="mb-3">Latitud UNO </h4>
@@ -205,7 +205,7 @@
       </footer>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   
-   <script src="./Js/distAirport.js"></script> 
+    <script src="./Js/distanciaEntrePuntos.js"></script> 
   </body>
 </html>
 

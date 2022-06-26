@@ -32,7 +32,7 @@ function LatLogGradosDecimales(grados, minutos, segundos) {
 
 
 
- const contenedor = document.querySelector('#resultadoDistAirport');
+const contenedor = document.querySelector('#resultadoDistAirport');
 let formDistAirpot = document.getElementById("DisAirportForm");
 
 formDistAirpot.addEventListener("submit",validarFormDisAirpot)
