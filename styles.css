@@ -105,3 +105,20 @@ body {
     -webkit-text-stroke-width: 0.5px;
     -webkit-text-stroke-color:white;
   }
+
+
+/*Vista Calculo entre puntos*/
+
+  #logoThePilotBag{
+    border-radius: 50%;
+  }
+
+#mainDisEntrePuntos{
+  background-image: url("https://images.unsplash.com/photo-1557683316-973673baf926?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Z3JhZGllbnQlMjBibHVlfGVufDB8fDB8fA%3D%3D&w=1000&q=80");
+  background-repeat:no-repeat;
+background-position-x:center;
+  background-position-y:25%; 
+  background-size: cover;
+
+  color: white
+}
