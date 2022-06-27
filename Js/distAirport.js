@@ -11,7 +11,7 @@ function LatLogGradosDecimales(grados, minutos, segundos) {
       return (x * Math.PI) / 180;
     };
   
-    let R = 6380.137; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
+    let R = 3443.918; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
     let dLat = rad(lat2 - lat1);
     let dLong = rad(lon2 - lon1);
     let a =

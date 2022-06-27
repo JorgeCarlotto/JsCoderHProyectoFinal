@@ -34,7 +34,7 @@ signo     = (direccion.toLowerCase() == 'w' ||
       return (x * Math.PI) / 180;
     };
   
-    let R = 6380.137; //Radio de la tierra en km 6380.137  //Radio de la tierra en nm 3443.918
+    let R = 3443.918; //Radio de la tierra en km 6380.137  //Radio de la tierra en nm 3443.918
     let dLat = rad(lat2 - lat1);
     let dLong = rad(lon2 - lon1);
     let a =
@@ -119,7 +119,7 @@ function validarFormDistPuntos(e){
     smallLatDos.innerHTML=  `Latitud:${latGraDos}° ${latMinuDos}" ${latSegDos}'`
     smallLongDos.innerHTML= `Longitud:${longGraDos}° ${longMinuDos}" ${longSegDos}'`
 
-    aPostUno.innerHTML='<a href="http://www.google.com/maps/place/'+lat1 +','+lon1+'" target="_blank">Google Maps</a>'
+    aPostUno.innerHTML='<a href="http://www.google.com/maps/place/'+lat1 +','+lon1+'" target="_blank">Ver tu punto en Google Maps</a>'
     aPostDos.innerHTML='<a href="http://www.google.com/maps/place/'+lat2+','+lon2+'" target="_blank">Google Maps</a>'
 
 
