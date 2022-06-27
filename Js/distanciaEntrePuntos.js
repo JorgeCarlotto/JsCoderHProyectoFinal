@@ -2,13 +2,30 @@
 
 //CALCULOS DE POSICIONAMIENTO Y DISTANCIA.
 
-//Primero se debe cambiar del formato grados minutos y segundos a Grados decimales.
+//Primero se debe cambiar del formato grados minutos y segundos a Grados decimales , Con la direccion determinamos el cuadrante cartografico.
 
-function LatLogGradosDecimales(grados, minutos, segundos) {
-    let result =
-      (parseInt(grados) + parseInt(minutos) / 60 + parseInt(segundos) / 60) * -1;
-    return result;
-  }
+function decimal(grados, minutos, segundos, direccion)
+{
+if(direccion){
+signo     = (direccion.toLowerCase() == 'w' ||
+    direccion.toLowerCase() == 's') ?
+    -1 : 1;
+    direccion = (direccion.toLowerCase() == 'w' ||
+        direccion.toLowerCase() == 's' ||
+        direccion.toLowerCase() == 'n' ||
+        direccion.toLowerCase() == 'e') ?
+        direccion.toLowerCase() : '';
+    }
+    else{
+    signo     = (parseInt(grados) < 0) ? -1 : 1;
+    direccion = '';
+    }
+    dec = Math.round((Math.abs(parseInt(grados)) + ((parseInt(minutos) * 60) + parseInt(segundos)) / 3600) * 1000000) / 1000000;
+    if(isNaN(direccion) || direccion == '')
+        dec = dec * signo;
+
+    return dec 
+}
   
   //Con los datos pasados a grados decimales se aplica la siguiente f
   
@@ -17,7 +34,7 @@ function LatLogGradosDecimales(grados, minutos, segundos) {
       return (x * Math.PI) / 180;
     };
   
-    let R = 3443.918; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
+    let R = 6380.137; //Radio de la tierra en km 6380.137  //Radio de la tierra en nm 3443.918
     let dLat = rad(lat2 - lat1);
     let dLong = rad(lon2 - lon1);
     let a =
@@ -38,6 +55,9 @@ const postUnoLongText = document.querySelector('#postUnoLongText');
 const postDosLartText = document.querySelector('#postDosLartText');
 const postDosLongText = document.querySelector('#postDosLongText');
 
+const verMapaPostUno = document.querySelector('#verMapaPostUno');
+const verMapaPostDos = document.querySelector('#verMapaPostDos');
+
 const resultFinal = document.querySelector('#resultFinal');
 
 
@@ -47,8 +67,17 @@ formDistPuntos.addEventListener("submit",validarFormDistPuntos)
 
 
 function validarFormDistPuntos(e){
+
     e.preventDefault();
-    let small = document.createElement('small');
+
+    let smallLatUno = document.createElement('small');
+    let smallLongUno = document.createElement('small');
+    let smallLatDos = document.createElement('small');
+    let smallLongDos = document.createElement('small');
+
+    let aPostUno = document.createElement('a');
+    let aPostDos = document.createElement('a');
+
     let tituloCuatro =document.createElement('h4')
 
     //Datos Latitud punto de partida
@@ -74,16 +103,37 @@ function validarFormDistPuntos(e){
     let longMinuDos =e.target[10].value;
     let longSegDos = e.target[11].value;
   
-    let lat1 = LatLogGradosDecimales(latGraUno, latMinuUno, latSegUno);
-    let lon1 = LatLogGradosDecimales(longGraUno, longMinuUno, longSegUno);
-    let lat2 = LatLogGradosDecimales(latGraDos, latMinuDos, latSegDos);
-    let lon2 = LatLogGradosDecimales(longGraDos, longMinuDos, longSegDos);
+    let lat1 = decimal(latGraUno, latMinuUno, latSegUno,"s");
+    let lon1 = decimal(longGraUno, longMinuUno, longSegUno,"w");
+    let lat2 = decimal(latGraDos, latMinuDos, latSegDos,"s");
+    let lon2 = decimal(longGraDos, longMinuDos, longSegDos,"w");
   
 
 
+
+
     tituloCuatro.innerHTML =`${Dist(lat1, lon1, lat2, lon2)} Nm`
+
+    smallLatUno.innerHTML = `Latitud:${latGraUno}° ${latMinuUno}" ${latSegUno}'`
+    smallLongUno.innerHTML= `Longitud:${longGraUno}° ${longMinuUno}" ${longSegUno}'`
+    smallLatDos.innerHTML=  `Latitud:${latGraDos}° ${latMinuDos}" ${latSegDos}'`
+    smallLongDos.innerHTML= `Longitud:${longGraDos}° ${longMinuDos}" ${longSegDos}'`
+
+    aPostUno.innerHTML='<a href="http://www.google.com/maps/place/'+lat1 +','+lon1+'" target="_blank">Google Maps</a>'
+    aPostDos.innerHTML='<a href="http://www.google.com/maps/place/'+lat2+','+lon2+'" target="_blank">Google Maps</a>'
+
+
  
-    resultFinal.appendChild(tituloCuatro);  
+    resultFinal.appendChild(tituloCuatro);
+
+    postUnoLartText.appendChild(smallLatUno);
+    postUnoLongText.appendChild(smallLongUno)
+    postDosLartText.appendChild(smallLatDos)
+    postDosLongText.appendChild(smallLongDos)
+
+    verMapaPostUno.appendChild(aPostUno)
+    verMapaPostDos.appendChild(aPostDos)
+
 
 
 }
@@ -91,6 +141,3 @@ function validarFormDistPuntos(e){
 
 
 
-
-
-    
