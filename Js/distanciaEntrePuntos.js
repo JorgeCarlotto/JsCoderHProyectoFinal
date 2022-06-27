@@ -120,7 +120,7 @@ function validarFormDistPuntos(e){
     smallLongDos.innerHTML= `Longitud:${longGraDos}° ${longMinuDos}" ${longSegDos}'`
 
     aPostUno.innerHTML='<a href="http://www.google.com/maps/place/'+lat1 +','+lon1+'" target="_blank">Ver tu punto en Google Maps</a>'
-    aPostDos.innerHTML='<a href="http://www.google.com/maps/place/'+lat2+','+lon2+'" target="_blank">Google Maps</a>'
+    aPostDos.innerHTML='<a href="http://www.google.com/maps/place/'+lat2+','+lon2+'" target="_blank">Ver tu punto en Google Maps</a>'
 
 
  
