@@ -8,154 +8,37 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
   </head>
-  <body>
-    <header>            <!-- NAVBAR -->
-      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="#">
-            <img src="https://skyblueja.com/wp-content/uploads/2021/05/White-charter-289x300.png" alt="" width="30" height="24" class="d-inline-block align-text-top bg-dark">
-            The PilotBag 
-          </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav me-auto mb-2 mb-md-0">
-              <li class="nav-item">
-                <!-- <a class="nav-link active" aria-current="page" href="/asd.html">Home</a> -->
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#herramientas">Herramientas</a> 
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#noticias">Noticias</a> 
-              </li>
-            </ul>
+  <body id="backgroundRegister" class="text-center">
+    <main class="form-signin w-100 m-auto ">
+        <form id="formularioDeLogin">
+            <img id="logoThePilotBag" class="d-block mx-auto mb-4 bg-dark" src="https://skyblueja.com/wp-content/uploads/2021/05/White-charter-289x300.png" alt="" width="72" height="57">
+            <h1 class="h3 mb-3 fw-normal text-dark  fw-bold">The PilotBag te da la Bienvenida</h1>
+      
+          <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="name@example.com">
+            <label class="text-dark" for="floatingInput">Usuario</label>
           </div>
-        </div>
-      </nav>
-      <!--FIN  NAVBAR -->
-    </header>
-<main>
-  <div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
-    <div class="carousel-indicators">
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-    </div>
-    <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655336349/HD-wallpaper-airport-night-illustration_jpukyp.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Calculo de distancia entre Aeropuertos</h1>
-            <p>Conoce la distancia tiempo y consumo de combustible entre los mas importantes aeropuertos del país</p>
-            <!--<p><a class="btn btn-lg btn-primary" href="#">Probalo ahora</a></p>-->
+          <div class="form-floating">
+            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+            <label class="text-dark" for="floatingPassword">Contraseña</label>
           </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655337797/25868493-trazado-de-vuelo-intercontinental-el-de-cartas-aeron%C3%A1uticas_h3ufam.webp" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-        <div class="container">
-          <div class="carousel-caption">
-            <h1 class="titleasd">Planifica tu vuelo punto a punto</h1>
-            <p>Con nuestra App carga tus posiciones nosotros hacemos el resto...</p>
-            <!--<p><a class="btn btn-lg btn-primary" href="#">Probalo ahora</a></p>-->
+          <div>
+            <h3 id="textoDeIngreso" class="h3 mb-3 fw-normal text-success"></h3>
+            <h3 id="textoDeIngresoFail" class="h3 mb-3 fw-normal text-danger"></h3>
           </div>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <img class="bd-placeholder-img" width="100%" height="100%" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655334171/airport-employee-fueling-airplane_hqeay0.jpg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#777"/></img>
-
-        <div class="container">
-          <div class="carousel-caption text-start">
-            <h1>Aeroplantas de Combustible</h1>
-            <p >Conoce las ultimas novedades y el precio actualizado del servicio de combustible</p>
-            <!--<p><a class="btn btn-lg btn-primary" href="#">Probalo ahora</a></p>-->
+          <div id="spiner"></div>
+          <div>
+            <small class="text-muted "><a href="http://127.0.0.1:5500/registro.html" target="_blank">¿No tenes cuenta? Registrate aquí</a></small>
           </div>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  
-  <div id="herramientas" class="container marketing">   
-    <div class="row">
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655335894/sectional-chart_ikkaca.jpg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
+      <br>
+          <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
 
-        <h2 class="fw-normal">Calculo por Puntos GPS</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui deserunt, similique asperiores explicabo sed enim sint id quia quos ad quas omnis atque ea saepe animi eius distinctio voluptatum dolores?</p>
-        <p><a href="http://127.0.0.1:5500/distEntrePuntos.html" class="btn btn-secondary" >Comerzar &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655338335/1292324964_0_p2iwua.jpg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-
-        <h2 class="fw-normal">Distancia entre Aeropuertos</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui deserunt, similique asperiores explicabo sed enim sint id quia quos ad quas omnis atque ea saepe animi eius distinctio voluptatum dolores?</p>
-        <p><a id="disAeropuertos2" href="http://127.0.0.1:5500/distAirport.html"  class="btn btn-secondary">Comerzar &raquo;</a></p>
-      </div>
-      <div class="col-lg-4">
-        <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655340297/download_hcqepr.png" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"/><text x="50%" y="50%" fill="#777" dy=".3em"></text></img>
-
-        <h2 class="fw-normal">Combustible</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui deserunt, similique asperiores explicabo sed enim sint id quia quos ad quas omnis atque ea saepe animi eius distinctio voluptatum dolores?</p>
-        <p><a id="calculosCumbustible"  class="btn btn-secondary" >Comerzar &raquo;</a></p>
-      </div>
-    </div>
-    <div id="dinamic"></div>
-    
-  
-
-    <hr id="noticias" class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7">
-        <h2 class="featurette-heading fw-normal lh-1">The PilotBag felicita a Pablo Santana por su primer vuelo solo.</h2>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit commodi impedit numquam aspernatur corporis itaque quae ipsum, ducimus officiis perferendis omnis minus possimus maxime id obcaecati quisquam veniam atque quos.</p>
-      </div>
-      <div class="col-md-5">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655340481/dd2c4825394fbdc2a27632d9ca31e228_bwexzd.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-
-      </div>
-    </div>
-    <hr class="featurette-divider">
-    <div class="row featurette">
-      <div class="col-md-7 order-md-2">
-        <h2 class="featurette-heading fw-normal lh-1">Este mes se estrena la pelicula mas esperar TOP GUN</h2>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit commodi impedit numquam aspernatur corporis itaque quae ipsum, ducimus officiis perferendis omnis minus possimus maxime id obcaecati quisquam veniam atque quos.</p>
-      </div>
-      <div class="col-md-5 order-md-1">
-        <img class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" src="https://res.cloudinary.com/ddi161cze/image/upload/v1655340835/ac7b3c00ff945561d008029af406fa3a_bgbyhs.png" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em"></text></img>
-
-      </div>
-    </div>
-
-    <hr class="featurette-divider"> 
-
-  </div>
-
-</main>
-      <footer class="container">
-       
-        <p><a class="btn btn-secondary float-end" href="#">Volver Arriba</a></p>
-        <p>&copy; Jorge Carlotto 👨‍💻 - Curso CODER HOUSE Javascript 2022 &middot;</p>
-      </footer>  
+          <p>&copy; Jorge Carlotto 👨‍💻  &middot;</p>
+        </form>
+      </main>
+      
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   
-   <script src="./miarchivo.js"></script> 
+   <script src="./Js/login.js"></script> 
   </body>
 </html>
-
-
-
-
-

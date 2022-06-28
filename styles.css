@@ -170,3 +170,22 @@ background-position-x:center;
     transform: rotate(360deg);
   }
 }
+
+#backgroundRegister{
+  background-image: url("https://fondosmil.com/fondo/31177.jpg");
+  background-repeat:no-repeat;
+  background-position-x:center;
+  background-position-y:25%; 
+  background-size: cover;
+
+  color: white
+}
+
+#backgroundLogin{
+  background-image: url("https://conocedores.com/wp-content/uploads/2019/09/avion-36mil-pies-11092019.jpg");
+  background-repeat:no-repeat;
+  background-position-x:center;
+  background-position-y:25%; 
+  background-size: cover;
+  color: white
+}

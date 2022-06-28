@@ -35,107 +35,114 @@ function LatLogGradosDecimales(grados, minutos, segundos) {
 
 
 
-  document.getElementById("calculosPuntos").onclick = function(){
+  // document.getElementById("calculosPuntos").onclick = function(){
 
-    alert("Ahora vamos a seleccionar la posición de donde salimos");
-    alert("Ejemplo : 42° 00' 00''");
-    //Datos Latitud punto de partida
-    let latGraUno = prompt("Latitud : Ingresa los grados");
-    let latMinuUno = prompt("Latitud : Ingresa los minutos");
-    let latSegUno = prompt("Latitud : Ingresa los segundos");
+  //   alert("Ahora vamos a seleccionar la posición de donde salimos");
+  //   alert("Ejemplo : 42° 00' 00''");
+  //   //Datos Latitud punto de partida
+  //   let latGraUno = prompt("Latitud : Ingresa los grados");
+  //   let latMinuUno = prompt("Latitud : Ingresa los minutos");
+  //   let latSegUno = prompt("Latitud : Ingresa los segundos");
   
-    //Datos Longitud punto de partida
-    alert("Ejemplo : 58° 00' 00''");
-    let longGraUno = prompt("Longitud : Ingresa los grados");
-    let longMinuUno = prompt("Longitud : Ingresa los minutos");
-    let longSegUno = prompt("Longitud : Ingresa los segundos");
+  //   //Datos Longitud punto de partida
+  //   alert("Ejemplo : 58° 00' 00''");
+  //   let longGraUno = prompt("Longitud : Ingresa los grados");
+  //   let longMinuUno = prompt("Longitud : Ingresa los minutos");
+  //   let longSegUno = prompt("Longitud : Ingresa los segundos");
   
-    alert("Ahora vamos a seleccionar la posición a donde queremos ir");
-    alert("Ejemplo : 41° 00' 00''");
-    //Datos Latitud punto de LLegada
-    let latGraDos = prompt("Latitud : Ingresa los grados");
-    let latMinuDos = prompt("Latitud : Ingresa los minutos");
-    let latSegDos = prompt("Latitud : Ingresa los segundos");
+  //   alert("Ahora vamos a seleccionar la posición a donde queremos ir");
+  //   alert("Ejemplo : 41° 00' 00''");
+  //   //Datos Latitud punto de LLegada
+  //   let latGraDos = prompt("Latitud : Ingresa los grados");
+  //   let latMinuDos = prompt("Latitud : Ingresa los minutos");
+  //   let latSegDos = prompt("Latitud : Ingresa los segundos");
   
-    //Datos Longitud punto de LLegada
-    alert("Ejemplo : 58° 00' 00''");
-    let longGraDos = prompt("Longitud : Ingresa los grados");
-    let longMinuDos = prompt("Longitud : Ingresa los minutos");
-    let longSegDos = prompt("Longitud : Ingresa los segundos");
+  //   //Datos Longitud punto de LLegada
+  //   alert("Ejemplo : 58° 00' 00''");
+  //   let longGraDos = prompt("Longitud : Ingresa los grados");
+  //   let longMinuDos = prompt("Longitud : Ingresa los minutos");
+  //   let longSegDos = prompt("Longitud : Ingresa los segundos");
   
-    let lat1 = LatLogGradosDecimales(latGraUno, latMinuUno, latSegUno);
-    let lon1 = LatLogGradosDecimales(longGraUno, longMinuUno, longSegUno);
-    let lat2 = LatLogGradosDecimales(latGraDos, latMinuDos, latSegDos);
-    let lon2 = LatLogGradosDecimales(longGraDos, longMinuDos, longSegDos);
+  //   let lat1 = LatLogGradosDecimales(latGraUno, latMinuUno, latSegUno);
+  //   let lon1 = LatLogGradosDecimales(longGraUno, longMinuUno, longSegUno);
+  //   let lat2 = LatLogGradosDecimales(latGraDos, latMinuDos, latSegDos);
+  //   let lon2 = LatLogGradosDecimales(longGraDos, longMinuDos, longSegDos);
   
-    alert(
-      "La distancia a tu destino es de: " +
-        Dist(lat1, lon1, lat2, lon2) +
-        "millas nauticas"
-    );
+  //   alert(
+  //     "La distancia a tu destino es de: " +
+  //       Dist(lat1, lon1, lat2, lon2) +
+  //       "millas nauticas"
+  //   );
 
-  }     
+  // }     
 
 
 
 
 
 //----------------------------------------------------------------------------------------------
-
+class plantaCombu {
+  constructor(obj){
+    this.id = obj.id;
+    this.nombre = obj.nombre;
+    this.aeroNafta = obj.aeroNafta;
+    this.JetA1= obj.JetA1;
+  }
+}
 
 const contenedor = document.querySelector('#dinamic');
 
 const btnAgregar = document.getElementById('disAeropuertos2');
 
+let Data =[]
+
+fetch("./dataBase/plantasCombustible.json")
+.then(response => {
+   return response.json();
+})
+.then(jsondata => {
+  
+  for (let i = 0; i < jsondata.length; i++) {
+    
+   
+    // console.log(JSON.stringify(jsondata[i]))
+
+    Data.push(new plantaCombu(jsondata[i]))
+ 
+  }
+
+});
+
+// console.log(Data)
+
+
 
   document.getElementById("calculosCumbustible").onclick = function(){
+
+    
 
     let div = document.createElement('div');
     alert(
         "En este momento tenemos disponibles en nuestra base de datos estos tres Aeropuertos"
       );
-    
-      //Objetos simulan base de datos Plantas de combustible
-      let marDelPlata = {
-        id: 1,
-        nombre: " Planta YPF Aeropuerto Mar del Plata ",
-        aeroNafta: 190,
-        JetA1: 150,
-      };
-    
-      let ezeiza = {
-        id: 2,
-        nombre: "Planta SHELL Aeropuerto Ezeiza",
-        aeroNafta: 170,
-        JetA1: 130,
-      };
-    
-      let comodoroRivadavia = {
-        id: 3,
-        nombre: "Planta YPF Aeropuerto Comodoro Rivadavia",
-        aeroNafta: 120,
-        JetA1: 100,
-      };
-    
-      let aeropuertos = [marDelPlata, ezeiza, comodoroRivadavia];
+   
       
-      
-      for (let i = 0; i < aeropuertos.length; i++) {
+      for (let i = 0; i <Data.length; i++) {
         div.innerHTML +=
             `
 <div class="container marketing">
     <div class="row">
       <div class="col-lg-4">
-        <h2 class="fw-normal">${aeropuertos[i].nombre}</h2>
+        <h2 class="fw-normal">${Data[i].nombre}</h2>
         <h3 class="fw-normal">Precio de Aero Nafta:</h3>
-        <p>${aeropuertos[i].aeroNafta} </p>
+        <p>${Data[i].aeroNafta} </p>
         <h3 class="fw-normal">Precio de JetA1:</h3>
-        <p>${aeropuertos[i].JetA1} </p>
+        <p>${Data[i].JetA1} </p>
       </div>
     </div>
     </div>
     `
-
+        
 
       }
       contenedor.appendChild(div);

@@ -31,7 +31,7 @@ div.innerHTML=`<div class="spinner"></div>`
 
 spiner.appendChild(div);  
 setTimeout(function(){
-    window.location.assign("http://127.0.0.1:5500/login.html")
+    window.location.assign("http://127.0.0.1:5500/index.html")
 },3000)
 
 

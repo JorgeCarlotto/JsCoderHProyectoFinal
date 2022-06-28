@@ -1,0 +1,27 @@
+[
+  {
+    "id": "1",
+    "nombre": "Planta YPF Aeropuerto Mar del Plata",
+    "aeroNafta": "190",
+    "JetA1": "150"
+  },
+  {
+    "id": "2",
+    "nombre": "Planta SHELL Aeropuerto Ezeiza",
+    "aeroNafta": "170",
+    "JetA1": "130"
+  },
+  {
+    "id": "3",
+    "nombre": "Planta YPF Aeropuerto Comodoro Rivadavia",
+    "aeroNafta": "120",
+    "JetA1": "100"
+  },
+  {
+    "id": "4",
+    "nombre": "Planta YPF San Fernando",
+    "aeroNafta": "170",
+    "JetA1": "130"
+  }
+
+]
