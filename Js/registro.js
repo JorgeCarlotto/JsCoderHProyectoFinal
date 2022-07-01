@@ -25,9 +25,12 @@ let user={
 let json = JSON.stringify(user)
 localStorage.setItem(nombreUsuario,json)
 
-textoDeRegistro.innerHTML = "Te Registraste Correctamente"
 
-div.innerHTML=`<div class="spinner"></div>`
+Swal.fire(
+    'Tu cuenta fue creada con exito',
+    'Te rediccionaremos al login...',
+    'success'
+  )
 
 spiner.appendChild(div);  
 setTimeout(function(){

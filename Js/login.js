@@ -19,7 +19,12 @@ let userLocal = localStorage.getItem(usuarioLog);
 let data = JSON.parse(userLocal)
 
 if(userLocal == null){
-    resultadoFail.innerHTML ="El Usuario no es correcto"
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'El Usuario no es correcto',
+      })
+
 }else if(usuarioLog == data.username && passLog == data.password){
 
     resultado.innerHTML =`Bienvenido ${data.username}`
@@ -30,7 +35,11 @@ if(userLocal == null){
     },3000)
     
 }else{
-    resultadoFail.innerHTML ="La contraseña no es correcta"
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'La Contraseña no es correcta',
+      })
 }
 
 
