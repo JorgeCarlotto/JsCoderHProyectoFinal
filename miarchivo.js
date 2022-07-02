@@ -113,7 +113,7 @@ fetch("./dataBase/plantasCombustible.json")
 
 });
 
-// console.log(Data)
+ console.log(Data)
 
 
 
