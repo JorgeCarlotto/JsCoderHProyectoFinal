@@ -1,52 +1,44 @@
 class plantaCombu {
-    constructor(obj){
-      this.id = obj.id;
-      this.nombre = obj.nombre;
-      this.aeroNafta = obj.aeroNafta;
-      this.JetA1= obj.JetA1;
-    }
+  constructor(obj) {
+    this.id = obj.id;
+    this.nombre = obj.nombre;
+    this.aeroNafta = obj.aeroNafta;
+    this.JetA1 = obj.JetA1;
   }
-  
-  const contenedor = document.querySelector('#dinamic');
-  
-  const btnAgregar = document.getElementById('disAeropuertos2');
-  
-  let Data =[]
-  
-  fetch("./dataBase/plantasCombustible.json")
-  .then(response => {
-     return response.json();
+}
+
+const contenedor = document.querySelector("#dinamic");
+
+const btnAgregar = document.getElementById("disAeropuertos2");
+
+let Data = [];
+
+fetch("./dataBase/plantasCombustible.json")
+  .then((response) => {
+    return response.json();
   })
-  .then(jsondata => {
-    
+  .then((jsondata) => {
     for (let i = 0; i < jsondata.length; i++) {
-      
-     
       // console.log(JSON.stringify(jsondata[i]))
-  
-      Data.push(new plantaCombu(jsondata[i]))
-   
+
+      Data.push(new plantaCombu(jsondata[i]));
     }
-  
   });
-  
-   console.log(Data)
-  
-  
-  
-    document.getElementById("calculosCumbustible").onclick = function(){
-  
-      
-  
-      let div = document.createElement('tbody');
-      alert(
-          "En este momento tenemos disponibles en nuestra base de datos estos tres Aeropuertos"
-        );
-     
-        
-        for (let i = 0; i <Data.length; i++) {
-          div.innerHTML +=
-              `
+
+// console.log(Data);
+
+
+
+window.addEventListener("load", function () {
+  fun2(); // simula el pedido async a la base de datos
+  setTimeout(fun1, 3000);
+});
+
+function fun1() {
+  let div = document.createElement("tbody");
+
+  for (let i = 0; i < Data.length; i++) {
+    div.innerHTML += `
             
             
               <td scope="row" class="text-start">${Data[i].nombre}</td>
@@ -54,10 +46,25 @@ class plantaCombu {
               <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
               <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
              
-      `
-      
-  
-        }
-        contenedor.appendChild(div);
-    
-    }
+      `;
+  }
+  contenedor.appendChild(div);
+}
+
+function fun2() {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      toast.addEventListener("mouseenter", Swal.stopTimer);
+      toast.addEventListener("mouseleave", Swal.resumeTimer);
+    },
+  });
+  Toast.fire({
+    icon: "info",
+    title: "Su información se esta cargardo",
+  });
+}

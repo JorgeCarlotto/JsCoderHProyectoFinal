@@ -5,10 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>App Aeronautica</title>
     
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link href="styles.css" rel="stylesheet">
   </head>
-  <body>
+  <body id="backgroundPlantasCombu">
     <header>            <!-- NAVBAR -->
       <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="container-fluid">
@@ -34,13 +35,13 @@
       
       <!--FIN  NAVBAR -->
     </header>
-    <p><a id="calculosCumbustible"  class="btn btn-secondary" >Comerzar &raquo;</a></p>
+    <main>
     <div class="container">
         <br>
         <h2 class="display-6 text-center mb-4">Plantas de combustible Disponibles</h2>
-    
+        <div id="spiner"></div>
         <div class="table-responsive">
-          <table id="dinamic" class="table text-center">
+          <table id="dinamic" class="table text-center" style="color: white;">
             <thead>
               <tr>
                 <th style="width: 34%;"></th>
@@ -49,53 +50,20 @@
                 <th style="width: 22%;">Contacto</th>
               </tr>
             </thead>
-            <!-- <tbody>
-              <tr>
-                <td>A</td>
-                <td>B</td>
-                <td>C</td>
-                <td>D</td>
-              </tr>
-  
-              <tr></tr>
 
-              <tr>
-                <td scope="row" class="text-start">${Data[i].nombre}</td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].aeroNafta}</td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
-                <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
-              </tr>
-            
-             <tr>
-              <td>A</td>
-              <td>B</td>
-              <td>C</td>
-              <td>D</td>
-             </tr>
-
-             <tr>
-              <td>A</td>
-              <td>B</td>
-              <td>C</td>
-              <td>D</td>
-             </tr>
-
-
-
-    
-            </tbody> -->
           </table>
         </div>
       </main>
   
     </div>
  
-      <footer class="container">
+      <footer class="container fixed-bottom">
         <br>
       <p>&copy; Jorge Carlotto 👨‍💻  - Curso CODER HOUSE Javascript 2022 &middot;</p>
       </footer>  
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
   
     <script src="./Js/test.js"></script> 
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   </body>
 </html>

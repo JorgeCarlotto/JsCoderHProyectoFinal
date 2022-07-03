@@ -4,32 +4,32 @@
 
 //Primero se debe cambiar del formato grados minutos y segundos a Grados decimales.
 
-function LatLogGradosDecimales(grados, minutos, segundos) {
-    let result =
-      (parseInt(grados) + parseInt(minutos) / 60 + parseInt(segundos) / 60) * -1;
-    return result;
-  }
+// function LatLogGradosDecimales(grados, minutos, segundos) {
+//     let result =
+//       (parseInt(grados) + parseInt(minutos) / 60 + parseInt(segundos) / 60) * -1;
+//     return result;
+//   }
   
-  //Con los datos pasados a grados decimales se aplica la siguiente f
+//   //Con los datos pasados a grados decimales se aplica la siguiente f
   
-  function Dist(lat1, lon1, lat2, lon2) {
-    rad = function (x) {
-      return (x * Math.PI) / 180;
-    };
+//   function Dist(lat1, lon1, lat2, lon2) {
+//     rad = function (x) {
+//       return (x * Math.PI) / 180;
+//     };
   
-    let R = 3443.918; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
-    let dLat = rad(lat2 - lat1);
-    let dLong = rad(lon2 - lon1);
-    let a =
-      Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-      Math.cos(rad(lat1)) *
-        Math.cos(rad(lat2)) *
-        Math.sin(dLong / 2) *
-        Math.sin(dLong / 2);
-    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-    let d = R * c;
-    return d.toFixed(1); //Retorna la distancia entre los dos puntos.
-  }
+//     let R = 3443.918; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
+//     let dLat = rad(lat2 - lat1);
+//     let dLong = rad(lon2 - lon1);
+//     let a =
+//       Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+//       Math.cos(rad(lat1)) *
+//         Math.cos(rad(lat2)) *
+//         Math.sin(dLong / 2) *
+//         Math.sin(dLong / 2);
+//     let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+//     let d = R * c;
+//     return d.toFixed(1); //Retorna la distancia entre los dos puntos.
+//   }
   
 
 
@@ -81,73 +81,73 @@ function LatLogGradosDecimales(grados, minutos, segundos) {
 
 
 //----------------------------------------------------------------------------------------------
-class plantaCombu {
-  constructor(obj){
-    this.id = obj.id;
-    this.nombre = obj.nombre;
-    this.aeroNafta = obj.aeroNafta;
-    this.JetA1= obj.JetA1;
-  }
-}
+// class plantaCombu {
+//   constructor(obj){
+//     this.id = obj.id;
+//     this.nombre = obj.nombre;
+//     this.aeroNafta = obj.aeroNafta;
+//     this.JetA1= obj.JetA1;
+//   }
+// }
 
-const contenedor = document.querySelector('#dinamic');
+// const contenedor = document.querySelector('#dinamic');
 
-const btnAgregar = document.getElementById('disAeropuertos2');
+// const btnAgregar = document.getElementById('disAeropuertos2');
 
-let Data =[]
+// let Data =[]
 
-fetch("./dataBase/plantasCombustible.json")
-.then(response => {
-   return response.json();
-})
-.then(jsondata => {
+// fetch("./dataBase/plantasCombustible.json")
+// .then(response => {
+//    return response.json();
+// })
+// .then(jsondata => {
   
-  for (let i = 0; i < jsondata.length; i++) {
+//   for (let i = 0; i < jsondata.length; i++) {
     
    
-    // console.log(JSON.stringify(jsondata[i]))
+//     // console.log(JSON.stringify(jsondata[i]))
 
-    Data.push(new plantaCombu(jsondata[i]))
+//     Data.push(new plantaCombu(jsondata[i]))
  
-  }
+//   }
 
-});
+// });
 
- console.log(Data)
+//  console.log(Data)
 
 
 
-  document.getElementById("calculosCumbustible").onclick = function(){
+//   document.getElementById("calculosCumbustible").onclick = function(){
 
     
 
-    let div = document.createElement('div');
-    alert(
-        "En este momento tenemos disponibles en nuestra base de datos estos tres Aeropuertos"
-      );
+//     let div = document.createElement('div');
+//     alert(
+//         "En este momento tenemos disponibles en nuestra base de datos estos tres Aeropuertos"
+//       );
    
       
-      for (let i = 0; i <Data.length; i++) {
-        div.innerHTML +=
-            `
-<div class="container marketing">
-    <div class="row">
-      <div class="col-lg-4">
-        <h2 class="fw-normal">${Data[i].nombre}</h2>
-        <h3 class="fw-normal">Precio de Aero Nafta:</h3>
-        <p>${Data[i].aeroNafta} </p>
-        <h3 class="fw-normal">Precio de JetA1:</h3>
-        <p>${Data[i].JetA1} </p>
-      </div>
-    </div>
-    </div>
-    `
+//       for (let i = 0; i <Data.length; i++) {
+//         div.innerHTML +=
+//             `
+// <div class="container marketing">
+//     <div class="row">
+//       <div class="col-lg-4">
+//         <h2 class="fw-normal">${Data[i].nombre}</h2>
+//         <h3 class="fw-normal">Precio de Aero Nafta:</h3>
+//         <p>${Data[i].aeroNafta} </p>
+//         <h3 class="fw-normal">Precio de JetA1:</h3>
+//         <p>${Data[i].JetA1} </p>
+//       </div>
+//     </div>
+//     </div>
+//     `
         
 
-      }
-      contenedor.appendChild(div);
+//       }
+//       contenedor.appendChild(div);
   
-  }
+//   }
 
 
 
@@ -225,11 +225,11 @@ fetch("./dataBase/plantasCombustible.json")
 //     contenedor.appendChild(div);
 // })
 
-const eliminar = (e) => {
-  const divPadre = contenedor;
-  contenedor.remove(divPadre);
+// const eliminar = (e) => {
+//   const divPadre = contenedor;
+//   contenedor.remove(divPadre);
   
-};
+// };
 
 
 
