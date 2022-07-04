@@ -4,6 +4,7 @@ class plantaCombu {
     this.nombre = obj.nombre;
     this.aeroNafta = obj.aeroNafta;
     this.JetA1 = obj.JetA1;
+    this.telefono = obj.telefono;
   }
 }
 
@@ -42,9 +43,9 @@ function fun1() {
             
             
               <td scope="row" class="text-start">${Data[i].nombre}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].aeroNafta}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].aeroNafta}$</td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}$</td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].telefono}</td>
              
       `;
   }
