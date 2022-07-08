@@ -1,6 +1,6 @@
-function LatLogGradosDecimales(grados, minutos, segundos) {
+function LatLogGradosDecimales(degrees, minutes, seconds) {
   let result =
-    (parseInt(grados) + parseInt(minutos) / 60 + parseInt(segundos) / 60) * -1;
+    (parseInt(degrees) + parseInt(minutes) / 60 + parseInt(seconds) / 60) * -1;
   return result;
 }
 

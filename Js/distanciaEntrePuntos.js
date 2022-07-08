@@ -4,28 +4,28 @@
 
 //Primero se debe cambiar del formato grados minutos y segundos a Grados decimales , Con la direccion determinamos el cuadrante cartografico.
 
-function decimal(grados, minutos, segundos, direccion) {
-  if (direccion) {
-    signo =
-      direccion.toLowerCase() == "w" || direccion.toLowerCase() == "s" ? -1 : 1;
-    direccion =
-      direccion.toLowerCase() == "w" ||
-      direccion.toLowerCase() == "s" ||
-      direccion.toLowerCase() == "n" ||
-      direccion.toLowerCase() == "e"
-        ? direccion.toLowerCase()
+function decimal(degrees, minutes, seconds, direction) {
+  if (direction) {
+    sign =
+      direction.toLowerCase() == "w" || direction.toLowerCase() == "s" ? -1 : 1;
+      direction =
+      direction.toLowerCase() == "w" ||
+      direction.toLowerCase() == "s" ||
+      direction.toLowerCase() == "n" ||
+      direction.toLowerCase() == "e"
+        ? direction.toLowerCase()
         : "";
   } else {
-    signo = parseInt(grados) < 0 ? -1 : 1;
-    direccion = "";
+    sign = parseInt(degrees) < 0 ? -1 : 1;
+    direction = "";
   }
   dec =
     Math.round(
-      (Math.abs(parseInt(grados)) +
-        (parseInt(minutos) * 60 + parseInt(segundos)) / 3600) *
+      (Math.abs(parseInt(degrees)) +
+        (parseInt(minutes) * 60 + parseInt(seconds)) / 3600) *
         1000000
     ) / 1000000;
-  if (isNaN(direccion) || direccion == "") dec = dec * signo;
+  if (isNaN(direction) || direction == "") dec = dec * sign;
 
   return dec;
 }
@@ -61,11 +61,11 @@ const verMapaPostDos = document.querySelector("#verMapaPostDos");
 
 const resultFinal = document.querySelector("#resultFinal");
 
-let formDistPuntos = document.getElementById("formDistPuntos");
+let formDistPoints = document.getElementById("formDistPuntos");
 
-formDistPuntos.addEventListener("submit", validarFormDistPuntos);
+formDistPoints.addEventListener("submit", validatePoint);
 
-function validarFormDistPuntos(e) {
+function validatePoint(e) {
   e.preventDefault();
 
   let smallLatUno = document.createElement("small");
@@ -76,7 +76,7 @@ function validarFormDistPuntos(e) {
   let aPostUno = document.createElement("a");
   let aPostDos = document.createElement("a");
 
-  let tituloCuatro = document.createElement("h4");
+  let titleFour = document.createElement("h4");
 
   //Datos Latitud punto de partida
   let latGraUno = e.target[0].value;
@@ -105,7 +105,7 @@ function validarFormDistPuntos(e) {
   let lat2 = decimal(latGraDos, latMinuDos, latSegDos, "s");
   let lon2 = decimal(longGraDos, longMinuDos, longSegDos, "w");
 
-  tituloCuatro.innerHTML = `${Dist(lat1, lon1, lat2, lon2)} Nm`;
+  titleFour.innerHTML = `${Dist(lat1, lon1, lat2, lon2)} Nm`;
 
   smallLatUno.innerHTML = `Latitud:${latGraUno}° ${latMinuUno}" ${latSegUno}'`;
   smallLongUno.innerHTML = `Longitud:${longGraUno}° ${longMinuUno}" ${longSegUno}'`;
@@ -125,7 +125,7 @@ function validarFormDistPuntos(e) {
     lon2 +
     '" target="_blank">Ver tu punto en Google Maps</a>';
 
-  resultFinal.appendChild(tituloCuatro);
+  resultFinal.appendChild(titleFour);
 
   postUnoLartText.appendChild(smallLatUno);
   postUnoLongText.appendChild(smallLongUno);
