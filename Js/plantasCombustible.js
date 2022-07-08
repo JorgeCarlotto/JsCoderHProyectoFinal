@@ -4,6 +4,9 @@ class plantaCombu {
     this.nombre = obj.nombre;
     this.aeroNafta = obj.aeroNafta;
     this.JetA1 = obj.JetA1;
+    this.telefono = obj.telefono;
+    this.latitud = obj.latitud;
+    this.longitud = obj.longitud;
   }
 }
 
@@ -42,10 +45,10 @@ function fun1() {
             
             
               <td scope="row" class="text-start">${Data[i].nombre}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].aeroNafta}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
-              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}</td>
-             
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].aeroNafta}$</td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].JetA1}$</td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg>${Data[i].telefono}</td>
+              <td><a href="http://www.google.com/maps/place/${Data[i].latitud},${Data[i].longitud}" target="_blank">⛽</a></td>
       `;
   }
   contenedor.appendChild(div);

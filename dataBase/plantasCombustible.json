@@ -4,28 +4,36 @@
     "nombre": "YPF Aeropuerto Mar del Plata",
     "aeroNafta": "190",
     "JetA1": "150",
-    "telefono":"(0223) 474-8030"
+    "telefono":"(0223) 474-8030",
+    "latitud":"-37.934172",
+    "longitud":"-57.573335"
   },
   {
     "id": "2",
     "nombre": "YPF Aeropuerto Ezeiza",
     "aeroNafta": "170",
     "JetA1": "130",
-    "telefono":"(011) 4480-0766/9193/0907"
+    "telefono":"(011) 4480-0766/9193/0907",
+    "latitud":"-34.822216",
+    "longitud":"-58.535839"
   },
   {
     "id": "3",
     "nombre": " YPF Aeropuerto Comodoro Rivadavia",
     "aeroNafta": "120",
     "JetA1": "100",
-    "telefono":"(0297) 454-8344/4548/3139"
+    "telefono":"(0297) 454-8344/4548/3139",
+    "latitud":"-45.785277",
+    "longitud":"-67.465555"
   },
   {
     "id": "4",
     "nombre": "YPF San Fernando",
     "aeroNafta": "170",
     "JetA1": "130",
-    "telefono":"(011) 4714-5470/4519/9787"
+    "telefono":"(011) 4714-5470/4519/9787",
+    "latitud":"-34.455",
+    "longitud":"-58.590277"
   }
 
 ]
