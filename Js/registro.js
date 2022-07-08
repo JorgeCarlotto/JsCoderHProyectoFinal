@@ -1,44 +1,33 @@
-let formularioDeRegistro= document.getElementById("formularioDeRegistro");
+let form = document.getElementById("form");
 let spiner = document.getElementById("spiner");
 
-formularioDeRegistro.addEventListener("submit",registro)
+form.addEventListener("submit", register);
 
+function register(e) {
+  e.preventDefault();
 
-function registro(e){
+  let div = document.createElement("div");
+  let userName = e.target[0].value;
+  let email = e.target[1].value;
+  let pass = e.target[2].value;
 
-e.preventDefault();
+  let user = {
+    username: userName,
+    email: email,
+    password: pass,
+  };
 
-let div = document.createElement('div');
-let nombreUsuario = e.target[0].value
-let correo = e.target[1].value
-let pass = e.target[2].value
+  let json = JSON.stringify(user);
+  localStorage.setItem(userName, json);
 
-let textoDeRegistro = document.getElementById("textoDeRegistro")
+  Swal.fire(
+    "Tu cuenta fue creada con exito",
+    "Te rediccionaremos al login...",
+    "success"
+  );
 
-
-let user={
-    username:nombreUsuario,
-    email:correo,
-    password:pass,
+  spiner.appendChild(div);
+  setTimeout(function () {
+    window.location.assign("http://127.0.0.1:5500/index.html");
+  }, 3000);
 }
-
-let json = JSON.stringify(user)
-localStorage.setItem(nombreUsuario,json)
-
-
-Swal.fire(
-    'Tu cuenta fue creada con exito',
-    'Te rediccionaremos al login...',
-    'success'
-  )
-
-spiner.appendChild(div);  
-setTimeout(function(){
-    window.location.assign("http://127.0.0.1:5500/index.html")
-},3000)
-
-
-
-}
-
-

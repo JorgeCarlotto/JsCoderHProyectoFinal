@@ -1,48 +1,37 @@
-let formularioDeLogin= document.getElementById("formularioDeLogin");
+let form = document.getElementById("form");
 let spiner = document.getElementById("spiner");
 
-formularioDeLogin.addEventListener("submit",login)
+form.addEventListener("submit", login);
 
+function login(e) {
+  e.preventDefault();
 
-function login(e){
+  let div = document.createElement("div");
+  let user = e.target[0].value;
+  let passLog = e.target[1].value;
+  let result = document.getElementById("inputText");
 
-e.preventDefault();
+  let userLocal = localStorage.getItem(user);
+  let data = JSON.parse(userLocal);
 
-let div = document.createElement('div');
-let usuarioLog = e.target[0].value
-let passLog = e.target[1].value
-let resultado = document.getElementById("textoDeIngreso")
-let resultadoFail = document.getElementById("textoDeIngresoFail")
-
-
-let userLocal = localStorage.getItem(usuarioLog);
-let data = JSON.parse(userLocal)
-
-if(userLocal == null){
+  if (userLocal == null) {
     Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'El Usuario no es correcto',
-      })
-
-}else if(usuarioLog == data.username && passLog == data.password){
-
-    resultado.innerHTML =`Bienvenido ${data.username}`
-    div.innerHTML=`<div class="spinner"></div>`
-    spiner.appendChild(div); 
-    setTimeout(function(){
-        window.location.assign("http://127.0.0.1:5500/main.html")
-    },3000)
-    
-}else{
+      icon: "error",
+      title: "Oops...",
+      text: "El Usuario no es correcto",
+    });
+  } else if (user == data.username && passLog == data.password) {
+    result.innerHTML = `Bienvenido ${data.username}`;
+    div.innerHTML = `<div class="spinner"></div>`;
+    spiner.appendChild(div);
+    setTimeout(function () {
+      window.location.assign("http://127.0.0.1:5500/main.html");
+    }, 3000);
+  } else {
     Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'La Contraseña no es correcta',
-      })
+      icon: "error",
+      title: "Oops...",
+      text: "La Contraseña no es correcta",
+    });
+  }
 }
-
-
-    
-}
-
