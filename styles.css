@@ -204,6 +204,8 @@ background-position-x:center;
  
 }
 
+/*vista aboutUs*/
+
 /* Style all font awesome icons */
 .fa {
   margin-left: 100px;
@@ -244,4 +246,7 @@ background-position-x:center;
 }
 
 
-
+#imgAuboutUs{
+  border-radius:100px;
+  
+}
