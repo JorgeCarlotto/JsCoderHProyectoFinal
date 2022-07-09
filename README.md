@@ -4,7 +4,7 @@
 
 <p>El proyecto es un sitio web el cual tiene como temática una APP Web para calculos y utilidades
 para pilotos de aeronaves</p>
-<p>Tiene como objetivo volverce una herramienta de consulta para preparar vuelos.</p>
+<p>Tiene como objetivo volverse una herramienta de consulta para preparar vuelos.</p>
 
 
 ### TECNOLOGIAS APLICADAS
