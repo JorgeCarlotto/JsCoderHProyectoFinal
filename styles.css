@@ -239,7 +239,7 @@ background-position-x:center;
 }
 
 /* linkedin */
-.fa-google {
+.fa-envelope {
   background: #dd4b39;
   color: white;
 
@@ -247,6 +247,7 @@ background-position-x:center;
 
 
 #imgAuboutUs{
+  margin-top: 60px;
   border-radius:100px;
   
 }
