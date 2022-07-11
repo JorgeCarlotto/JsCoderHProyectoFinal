@@ -6,6 +6,9 @@
 para pilotos de aeronaves</p>
 <p>Tiene como objetivo volverse una herramienta de consulta para preparar vuelos.</p>
 
+### ARRANQUE DEL PROYECTO
+<p>El proyecto se puede levantar con liveServer desde el archivo index.html</p>
+
 
 ### TECNOLOGIAS APLICADAS
 <p>

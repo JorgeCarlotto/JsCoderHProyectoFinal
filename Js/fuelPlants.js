@@ -16,7 +16,7 @@ const btnAgregar = document.getElementById("disAeropuertos2");
 
 let Data = [];
 
-fetch("./dataBase/fuelPlantsDataBase.json")
+fetch("./dataBase/fuelPlantsDataBase.json")   //consulta a la base de datos local
   .then((response) => {
     return response.json();
   })
