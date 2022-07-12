@@ -1,10 +1,7 @@
-function LatLogGradosDecimales(degrees, minutes, seconds) {
-  let result =
-    (parseInt(degrees) + parseInt(minutes) / 60 + parseInt(seconds) / 60) * -1;
-  return result;
-}
+const contenedor = document.querySelector("#resultadoDistAirport");
+let formDistAirpot = document.getElementById("DisAirportForm");
 
-//Con los datos pasados a grados decimales se aplica la siguiente f
+// Función para determinar la distancia
 
 function Distance(latitudOne, longitudOne, latitudTwo, longitudTwo) {
   rad = function (x) {
@@ -24,14 +21,6 @@ function Distance(latitudOne, longitudOne, latitudTwo, longitudTwo) {
   let finalDistance = radio * calculate;
   return finalDistance.toFixed(1); //Retorna la distancia entre los dos puntos.
 }
-
-const contenedor = document.querySelector("#resultadoDistAirport");
-let formDistAirpot = document.getElementById("DisAirportForm");
-
-const eliminar = (e) => {
-  const divPadre = contenedor;
-  contenedor.remove(divPadre);
-};
 
 //llamado API
 
@@ -55,8 +44,9 @@ function API() {
       airpotsDataAtributes(dataAirports);
     })
     .then(() => {
-      formDistAirpot.addEventListener("submit", validarFormDisAirpot);
 
+      //validación del formulario capta los datos y arma el div con el resultado
+      formDistAirpot.addEventListener("submit", validarFormDisAirpot);  
       function validarFormDisAirpot(e) {
         e.preventDefault();
         let div = document.createElement("div");
@@ -131,6 +121,13 @@ function API() {
 
 API();
 
+
+const eliminar = (e) => {
+  const divPadre = contenedor;
+  contenedor.remove(divPadre);
+};
+
+//Extraer los nombres de los aeropuertos para armar el option del usuario.
 function airpotsDataAtributes(dataAirports) {
   let airportsName = [];
 
@@ -144,7 +141,9 @@ function airpotsDataAtributes(dataAirports) {
 let selectOne = document.querySelector("#testSelectOne");
 let selectTwo = document.querySelector("#testSelectTwo");
 
-function selectAirportList(listAirportName) {
+
+//Crea Options
+function selectAirportList(listAirportName) {  
   for (value in listAirportName) {
     var option = document.createElement("option");
     option.text = listAirportName[value];

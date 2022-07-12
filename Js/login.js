@@ -10,7 +10,6 @@ function login(e) {
   let user = e.target[0].value;
   let passLog = e.target[1].value;
   let result = document.getElementById("inputText");
-
   let userLocal = localStorage.getItem(user);
   let data = JSON.parse(userLocal);
 

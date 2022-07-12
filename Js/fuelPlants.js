@@ -27,11 +27,11 @@ fetch("../dataBase/fuelPlantsDataBase.json") //consulta a la base de datos local
   });
 
 window.addEventListener("load", function () {
-  fun2(); // simula el pedido async a la base de datos
-  setTimeout(fun1, 3000);
+  alerWaitFuel(); // simula el pedido async a la base de datos
+  setTimeout(FuelTable, 3000);
 });
 
-function fun1() {
+function FuelTable() {
   let div = document.createElement("tbody");
 
   for (let i = 0; i < Data.length; i++) {
@@ -48,7 +48,7 @@ function fun1() {
   contenedor.appendChild(div);
 }
 
-function fun2() {
+function alerWaitFuel() {
   const Toast = Swal.mixin({
     toast: true,
     position: "top-end",

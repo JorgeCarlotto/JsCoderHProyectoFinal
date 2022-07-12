@@ -1,4 +1,15 @@
+const postUnoLartText = document.querySelector("#postUnoLartText");
+const postUnoLongText = document.querySelector("#postUnoLongText");
+const postDosLartText = document.querySelector("#postDosLartText");
+const postDosLongText = document.querySelector("#postDosLongText");
+const verMapaPostUno = document.querySelector("#verMapaPostUno");
+const verMapaPostDos = document.querySelector("#verMapaPostDos");
+const resultFinal = document.querySelector("#resultFinal");
+let formDistPoints = document.getElementById("formDistPuntos");
 
+
+
+//funcion toma los datos numericos del formulario crea la posicion grados decimales.
 function decimal(degrees, minutes, seconds, direction) {
   if (direction) {
     sign =
@@ -46,18 +57,7 @@ function Distance(latitudOne, longitudOne, latitudTwo, longitudTwo) {
   return finalDistance.toFixed(1); //Retorna la distancia entre los dos puntos.
 }
 
-const postUnoLartText = document.querySelector("#postUnoLartText");
-const postUnoLongText = document.querySelector("#postUnoLongText");
-const postDosLartText = document.querySelector("#postDosLartText");
-const postDosLongText = document.querySelector("#postDosLongText");
-
-const verMapaPostUno = document.querySelector("#verMapaPostUno");
-const verMapaPostDos = document.querySelector("#verMapaPostDos");
-
-const resultFinal = document.querySelector("#resultFinal");
-
-let formDistPoints = document.getElementById("formDistPuntos");
-
+//Evento Submit y validación de datos.
 formDistPoints.addEventListener("submit", validatePoint);
 
 function validatePoint(e) {
