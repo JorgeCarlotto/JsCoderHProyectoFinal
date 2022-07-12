@@ -28,117 +28,136 @@ function Dist(lat1, lon1, lat2, lon2) {
 const contenedor = document.querySelector("#resultadoDistAirport");
 let formDistAirpot = document.getElementById("DisAirportForm");
 
-formDistAirpot.addEventListener("submit", validarFormDisAirpot);
-
-function validarFormDisAirpot(e) {
-  e.preventDefault();
-  let div = document.createElement("div");
-
-  let aeropuertoSalida = e.target[0].value;
-  let aeropuertoLlegada = e.target[1].value;
-
-  //Objetos simulan base de datos de aeropuertos
-  let sazm = {
-    id: 1,
-    nombre: "Mar del Plata",
-    lat: [37, 56, 02],
-    log: [57, 34, 22],
-  };
-
-  let sabe = {
-    id: 2,
-    nombre: "Aeroparque",
-    lat: [34, 33, 32],
-    log: [58, 24, 57],
-  };
-
-  let saez = {
-    id: 3,
-    nombre: "Ezeiza",
-    lat: [34, 49, 19],
-    log: [58, 32, 09],
-  };
-
-  let dataBaseAirpot = [sazm, sabe, saez];
-
-  // recorre la base compara la selección gerenera arry con las posiciones con formato editado
-  function takeoffAirport(takeoff) {
-    for (let i = 0; i < dataBaseAirpot.length; i++) {
-      if (parseInt(takeoff) === dataBaseAirpot[i].id) {
-        let positionOne = [];
-        let lat1 = LatLogGradosDecimales(
-          dataBaseAirpot[i].lat[0],
-          dataBaseAirpot[i].lat[1],
-          dataBaseAirpot[i].lat[2]
-        );
-        let lon1 = LatLogGradosDecimales(
-          dataBaseAirpot[i].log[0],
-          dataBaseAirpot[i].log[1],
-          dataBaseAirpot[i].log[2]
-        );
-
-        positionOne.push(lat1, lon1);
-        return positionOne;
-      }
-    }
-  }
-
-  function landingAirport(landing) {
-    for (let i = 0; i < dataBaseAirpot.length; i++) {
-      if (parseInt(landing) === dataBaseAirpot[i].id) {
-        let positionTwo = [];
-        let lat1 = LatLogGradosDecimales(
-          dataBaseAirpot[i].lat[0],
-          dataBaseAirpot[i].lat[1],
-          dataBaseAirpot[i].lat[2]
-        );
-        let lon1 = LatLogGradosDecimales(
-          dataBaseAirpot[i].log[0],
-          dataBaseAirpot[i].log[1],
-          dataBaseAirpot[i].log[2]
-        );
-
-        positionTwo.push(lat1, lon1);
-        return positionTwo;
-      }
-    }
-  }
-
-  let toaLat = takeoffAirport(aeropuertoSalida)[0];
-  let toaLong = takeoffAirport(aeropuertoSalida)[1];
-  let lanLat = landingAirport(aeropuertoLlegada)[0];
-  let lanlog = landingAirport(aeropuertoLlegada)[1];
-
-  div.innerHTML = `
-   
-   <div class="b-example-divider"></div>
-   <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog" id="modalSheet">
-       <div class="modal-dialog" role="document">
-         <div class="modal-content rounded-4 shadow">
-           <div class="modal-header border-bottom-0">
-             <h5 class="modal-title">La Distancia entre los aeropuertos es:</h5>         
-           </div>
-           <div class="modal-body py-0">
-             <h3 class="modal-title"> ${Dist(
-               toaLat,
-               toaLong,
-               lanLat,
-               lanlog
-             )} Millas Nauticas</h3>
-           </div>
-           <div class="modal-footer flex-column border-top-0">
-             <button  onclick="eliminar(this)" type="button" class="btn btn-lg btn-danger w-100 mx-0" data-bs-dismiss="modal">Close</button>
-           </div>
-         </div>
-       </div>
-     </div>
-   </div>;
-   
-   `;
-  contenedor.appendChild(div);
-}
-
 const eliminar = (e) => {
   const divPadre = contenedor;
   contenedor.remove(divPadre);
 };
+
+function API() {
+  //llamado API
+
+  const url = `https://soluciones.aeroterra.com/server/rest/services/OD_Transporte/ANAC_Aerodromos/FeatureServer/0/query?where=1%3D1&outFields=oaci,longitud,latitud,provincia,iata,denominacion&outSR=4326&f=json`;
+
+  const dataAirports = [];
+
+  fetch(url)
+    .then((data) => {
+      return data.json();
+    })
+    .then((dataJSON) => {
+      for (let i = 0; i < dataJSON.features.length; i++) {
+        //console.log(dataJSON.features[i].attributes.oaci)
+
+        if (dataJSON.features[i].attributes.oaci) {
+          dataAirports.push(dataJSON.features[i].attributes);
+        }
+      }
+      // console.log(dataJSON.features[25].attributes.denominacion); //consulta de datos
+      // console.log(dataJSON.features[25].attributes); //consulta de datos
+      //console.log(dataAirports)
+      airpotsDataAtributes(dataAirports);
+    })
+    .then(() => {
+      formDistAirpot.addEventListener("submit", validarFormDisAirpot);
+
+      function validarFormDisAirpot(e) {
+        e.preventDefault();
+        let div = document.createElement("div");
+
+        let aeropuertoSalida = e.target[0].value;
+        let aeropuertoLlegada = e.target[1].value;
+
+        function takeoffAirport() {
+          for (let i = 0; i < dataAirports.length; i++) {
+            if (aeropuertoSalida === dataAirports[i].denominacion) {
+              let airpotTakeOffPosition = [];
+
+              let lat = dataAirports[i].latitud;
+              let long = dataAirports[i].longitud;
+
+              airpotTakeOffPosition.push(lat, long);
+
+              return airpotTakeOffPosition;
+            }
+          }
+        }
+
+        function landingAirport() {
+          for (let i = 0; i < dataAirports.length; i++) {
+            if (aeropuertoLlegada === dataAirports[i].denominacion) {
+              let airpotLandingPosition = [];
+
+              let lat = dataAirports[i].latitud;
+              let long = dataAirports[i].longitud;
+
+              airpotLandingPosition.push(lat, long);
+
+              return airpotLandingPosition;
+            }
+          }
+        }
+
+        div.innerHTML = `
+   
+      <div class="b-example-divider"></div>
+      <div class="modal modal-sheet position-static d-block  py-5" tabindex="-1" role="dialog" id="modalSheet">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content rounded-4 shadow">
+              <div class="modal-header border-bottom-0">
+                <h5 class="modal-title">La Distancia entre los aeropuertos es:</h5>         
+              </div>
+              <div class="modal-body py-0">
+                <h3 class="modal-title"> ${Dist(
+                  takeoffAirport()[0],
+                  takeoffAirport()[1],
+                  landingAirport()[0],
+                  landingAirport()[1]
+                )} Millas Nauticas</h3>
+              </div>
+              <div class="modal-footer flex-column border-top-0">
+                <button  onclick="eliminar(this)" type="button" class="btn btn-lg btn-danger w-100 mx-0" data-bs-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>;
+      
+      `;
+        contenedor.appendChild(div);
+      }
+    })
+
+    .catch((err) => {
+      console.log(err);
+    });
+}
+
+API();
+
+function airpotsDataAtributes(dataAirports) {
+  let airportsName = [];
+
+  for (let i = 0; i < dataAirports.length; i++) {
+    airportsName.push(dataAirports[i].denominacion);
+  }
+
+  selectAirportList(airportsName.sort());
+}
+
+let selectOne = document.querySelector("#testSelectOne");
+let selectTwo = document.querySelector("#testSelectTwo");
+
+function selectAirportList(listAirportName) {
+  for (value in listAirportName) {
+    var option = document.createElement("option");
+    option.text = listAirportName[value];
+    selectOne.add(option);
+  }
+
+  for (value in listAirportName) {
+    var option = document.createElement("option");
+    option.text = listAirportName[value];
+
+    selectTwo.add(option);
+  }
+}
