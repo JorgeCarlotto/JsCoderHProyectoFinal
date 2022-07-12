@@ -16,21 +16,15 @@ const btnAgregar = document.getElementById("disAeropuertos2");
 
 let Data = [];
 
-fetch("../dataBase/fuelPlantsDataBase.json")   //consulta a la base de datos local
+fetch("../dataBase/fuelPlantsDataBase.json") //consulta a la base de datos local
   .then((response) => {
     return response.json();
   })
   .then((jsondata) => {
     for (let i = 0; i < jsondata.length; i++) {
-      // console.log(JSON.stringify(jsondata[i]))
-
       Data.push(new plantaCombu(jsondata[i]));
     }
   });
-
-// console.log(Data);
-
-
 
 window.addEventListener("load", function () {
   fun2(); // simula el pedido async a la base de datos

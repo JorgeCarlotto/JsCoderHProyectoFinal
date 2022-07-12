@@ -1,8 +1,3 @@
-//Funciones bases de la app
-
-//CALCULOS DE POSICIONAMIENTO Y DISTANCIA.
-
-//Primero se debe cambiar del formato grados minutos y segundos a Grados decimales , Con la direccion determinamos el cuadrante cartografico.
 
 function decimal(degrees, minutes, seconds, direction) {
   if (direction) {
@@ -32,23 +27,23 @@ function decimal(degrees, minutes, seconds, direction) {
 
 //Con los datos pasados a grados decimales se aplica la siguiente f
 
-function Dist(lat1, lon1, lat2, lon2) {
+function Distance(latitudOne, longitudOne, latitudTwo, longitudTwo) {
   rad = function (x) {
     return (x * Math.PI) / 180;
   };
 
-  let R = 3443.918; //Radio de la tierra en km 6380.137  //Radio de la tierra en nm 3443.918
-  let dLat = rad(lat2 - lat1);
-  let dLong = rad(lon2 - lon1);
-  let a =
-    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(rad(lat1)) *
-      Math.cos(rad(lat2)) *
-      Math.sin(dLong / 2) *
-      Math.sin(dLong / 2);
-  let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-  let d = R * c;
-  return d.toFixed(1); //Retorna la distancia entre los dos puntos.
+  let radio = 3443.918; //Radio de la tierra en km 6378.137  //Radio de la tierra en nm 3443.918
+  let distanceLatitud = rad(latitudTwo - latitudOne);
+  let distanceLongitud = rad(longitudTwo - longitudOne);
+  let calculateOne =
+    Math.sin(distanceLatitud / 2) * Math.sin(distanceLatitud / 2) +
+    Math.cos(rad(latitudOne)) *
+      Math.cos(rad(latitudTwo)) *
+      Math.sin(distanceLongitud / 2) *
+      Math.sin(distanceLongitud / 2);
+  let calculate = 2 * Math.atan2(Math.sqrt(calculateOne), Math.sqrt(1 - calculateOne));
+  let finalDistance = radio * calculate;
+  return finalDistance.toFixed(1); //Retorna la distancia entre los dos puntos.
 }
 
 const postUnoLartText = document.querySelector("#postUnoLartText");
@@ -68,70 +63,70 @@ formDistPoints.addEventListener("submit", validatePoint);
 function validatePoint(e) {
   e.preventDefault();
 
-  let smallLatUno = document.createElement("small");
-  let smallLongUno = document.createElement("small");
-  let smallLatDos = document.createElement("small");
-  let smallLongDos = document.createElement("small");
+  let smallLatatitudUno = document.createElement("small");
+  let smallLongongitudUno = document.createElement("small");
+  let smallLatatitudDos = document.createElement("small");
+  let smallLongongitudDos = document.createElement("small");
 
-  let aPostUno = document.createElement("a");
-  let aPostDos = document.createElement("a");
+  let aPositionOne = document.createElement("a");
+  let aPositionTwo = document.createElement("a");
 
   let titleFour = document.createElement("h4");
 
   //Datos Latitud punto de partida
-  let latGraUno = e.target[0].value;
-  let latMinuUno = e.target[1].value;
-  let latSegUno = e.target[2].value;
+  let latatitudGraUno = e.target[0].value;
+  let latatitudMinuUno = e.target[1].value;
+  let latatitudSegUno = e.target[2].value;
 
   //Datos Longitud punto de partida
 
-  let longGraUno = e.target[3].value;
-  let longMinuUno = e.target[4].value;
-  let longSegUno = e.target[5].value;
+  let longitudGraUno = e.target[3].value;
+  let longitudMinuUno = e.target[4].value;
+  let longitudSegUno = e.target[5].value;
 
   //Datos Latitud punto de LLegada
-  let latGraDos = e.target[6].value;
-  let latMinuDos = e.target[7].value;
-  let latSegDos = e.target[8].value;
+  let latatitudGraDos = e.target[6].value;
+  let latatitudMinuDos = e.target[7].value;
+  let latatitudSegDos = e.target[8].value;
 
   //Datos Longitud punto de LLegada
 
-  let longGraDos = e.target[9].value;
-  let longMinuDos = e.target[10].value;
-  let longSegDos = e.target[11].value;
+  let longitudGraDos = e.target[9].value;
+  let longitudMinuDos = e.target[10].value;
+  let longitudSegDos = e.target[11].value;
 
-  let lat1 = decimal(latGraUno, latMinuUno, latSegUno, "s");
-  let lon1 = decimal(longGraUno, longMinuUno, longSegUno, "w");
-  let lat2 = decimal(latGraDos, latMinuDos, latSegDos, "s");
-  let lon2 = decimal(longGraDos, longMinuDos, longSegDos, "w");
+  let latitudOne = decimal(latatitudGraUno, latatitudMinuUno, latatitudSegUno, "s");
+  let longitudOne = decimal(longitudGraUno, longitudMinuUno, longitudSegUno, "w");
+  let latitudTwo = decimal(latatitudGraDos, latatitudMinuDos, latatitudSegDos, "s");
+  let longitudTwo = decimal(longitudGraDos, longitudMinuDos, longitudSegDos, "w");
 
-  titleFour.innerHTML = `${Dist(lat1, lon1, lat2, lon2)} Nm`;
+  titleFour.innerHTML = `${Distance(latitudOne, longitudOne, latitudTwo, longitudTwo)} Nm`;
 
-  smallLatUno.innerHTML = `Latitud:${latGraUno}° ${latMinuUno}" ${latSegUno}'`;
-  smallLongUno.innerHTML = `Longitud:${longGraUno}° ${longMinuUno}" ${longSegUno}'`;
-  smallLatDos.innerHTML = `Latitud:${latGraDos}° ${latMinuDos}" ${latSegDos}'`;
-  smallLongDos.innerHTML = `Longitud:${longGraDos}° ${longMinuDos}" ${longSegDos}'`;
+  smallLatatitudUno.innerHTML = `Latitud:${latatitudGraUno}° ${latatitudMinuUno}" ${latatitudSegUno}'`;
+  smallLongongitudUno.innerHTML = `Longitud:${longitudGraUno}° ${longitudMinuUno}" ${longitudSegUno}'`;
+  smallLatatitudDos.innerHTML = `Latitud:${latatitudGraDos}° ${latatitudMinuDos}" ${latatitudSegDos}'`;
+  smallLongongitudDos.innerHTML = `Longitud:${longitudGraDos}° ${longitudMinuDos}" ${longitudSegDos}'`;
 
-  aPostUno.innerHTML =
+  aPositionOne.innerHTML =
     '<a href="http://www.google.com/maps/place/' +
-    lat1 +
+    latitudOne +
     "," +
-    lon1 +
+    longitudOne +
     '" target="_blank">Ver tu punto en Google Maps</a>';
-  aPostDos.innerHTML =
+  aPositionTwo.innerHTML =
     '<a href="http://www.google.com/maps/place/' +
-    lat2 +
+    latitudTwo +
     "," +
-    lon2 +
+    longitudTwo +
     '" target="_blank">Ver tu punto en Google Maps</a>';
 
   resultFinal.appendChild(titleFour);
 
-  postUnoLartText.appendChild(smallLatUno);
-  postUnoLongText.appendChild(smallLongUno);
-  postDosLartText.appendChild(smallLatDos);
-  postDosLongText.appendChild(smallLongDos);
+  postUnoLartText.appendChild(smallLatatitudUno);
+  postUnoLongText.appendChild(smallLongongitudUno);
+  postDosLartText.appendChild(smallLatatitudDos);
+  postDosLongText.appendChild(smallLongongitudDos);
 
-  verMapaPostUno.appendChild(aPostUno);
-  verMapaPostDos.appendChild(aPostDos);
+  verMapaPostUno.appendChild(aPositionOne);
+  verMapaPostDos.appendChild(aPositionTwo);
 }

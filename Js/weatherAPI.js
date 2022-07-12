@@ -43,7 +43,7 @@ function API(city, country) { //llamado API OpenWeather
         clear();
         weatherData(dataJSON);
       }
-      // console.log(dataJSON); //consulta de datos
+      
     })
     .catch((err) => {
       console.log(err);
